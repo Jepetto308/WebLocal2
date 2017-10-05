@@ -8,7 +8,7 @@ import java.awt.Image;
 
 /**
  *
- * @author ASUS
+ * @author Jefferson Palacios Torres
  */
 public class Producto {
     
