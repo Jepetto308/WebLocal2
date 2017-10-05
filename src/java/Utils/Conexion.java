@@ -55,8 +55,8 @@ public class Conexion {
     }
 
     public static void main(String[] args) {
-//        Conexion cls = new Conexion();
-//        cls.conectar("127.0.0.1", "inventario", "root", "");
+        Conexion cls = new Conexion();
+        cls.conectar("127.0.0.1", "inventario", "root", "");
 //        try {
 //            PreparedStatement ps = conexion.prepareStatement("INSERT INTO productos (nombre, cantidad, descripcion) VALUES ('Arroz',1,'Arroz Diana por lb')");
 //            ps.executeUpdate();
