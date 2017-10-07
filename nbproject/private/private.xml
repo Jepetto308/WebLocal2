@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Pc/NetBeans/WebLocal2/src/java/Action/ActionProducto.java</file>
+            <file>file:/C:/Pc/NetBeans/WebLocal2/web/WEB-INF/web.xml</file>
             <file>file:/C:/Pc/NetBeans/WebLocal2/web/index.jsp</file>
+            <file>file:/C:/Pc/NetBeans/WebLocal2/web/Jsp/inicio.jsp</file>
+            <file>file:/C:/Pc/NetBeans/WebLocal2/src/java/Action/ActionInsertarProducto.java</file>
+            <file>file:/C:/Pc/NetBeans/WebLocal2/src/java/Dao/DaoProducto.java</file>
         </group>
     </open-files>
 </project-private>
