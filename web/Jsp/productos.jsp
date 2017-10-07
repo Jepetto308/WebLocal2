@@ -11,12 +11,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Productos</title>
     </head>
+    <jsp:include page="menu.jsp"/>
     <body>
-        <h3>Bienvenido: <c:out value = "${username.nombre}"/></h3>
-        <h1>Productos</h1>
-        <table>
+        <div class="contenido">
+            <h1>Productos</h1>
+            <table>
                 <tr>
                     <td>Nombre</td>
                     <td>Cantidad</td>
@@ -29,6 +30,7 @@
                         <td><c:out value = "${obj.descripcion}"/></td>
                     </tr>
                 </c:forEach>
-        </table>
+            </table>
+        </div>
     </body>
 </html>

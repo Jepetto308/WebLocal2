@@ -6,7 +6,6 @@
 package Controller;
 
 import Action.ActionProducto;
-import Model.Usuario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -14,33 +13,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Jefferson Palacios Torres | Correo: jefferson308@hotmail.com
  */
 public class ControlProducto extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        proccesRequest(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession objSesion = request.getSession(false); 
-        Usuario oUsuario = (Usuario)objSesion.getAttribute("user");
-        
+        proccesRequest(request, response);
+    }
+
+    protected void proccesRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         ActionProducto oActionInsertarProducto = new ActionProducto();
         List listaProductos = oActionInsertarProducto.listarProductos();
-        
-        request.setAttribute("username", oUsuario.getUsername());
         request.setAttribute("listaProductos", listaProductos);
-        
+
         request.getRequestDispatcher("Jsp/productos.jsp").forward(request, response);
     }
 

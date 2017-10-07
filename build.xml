@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="WebLocal2" default="default" basedir=".">
-    <description>Builds, tests, and runs the project WebLocal2.</description>
+<project name="EasyInventary" default="default" basedir=".">
+    <description>Builds, tests, and runs the project EasyInventary.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

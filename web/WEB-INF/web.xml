@@ -8,6 +8,10 @@
         <servlet-name>ControlLogin</servlet-name>
         <servlet-class>Controller.ControlLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlAccesoPages</servlet-name>
+        <servlet-class>Controller.ControlAccesoPages</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlProducto</servlet-name>
         <url-pattern>/ControlProducto</url-pattern>
@@ -16,13 +20,16 @@
         <servlet-name>ControlLogin</servlet-name>
         <url-pattern>/ControlLogin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlAccesoPages</servlet-name>
+        <url-pattern>/ControlAccesoPages</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            10
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

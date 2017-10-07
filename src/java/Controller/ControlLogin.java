@@ -18,8 +18,20 @@ import javax.servlet.http.HttpSession;
 public class ControlLogin extends HttpServlet {
     
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        proccesRequest(request, response);
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        proccesRequest(request, response);
+    }
+    
+    protected void proccesRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             
@@ -30,8 +42,6 @@ public class ControlLogin extends HttpServlet {
             
             if("".equals(oUsuario.getUsername())){
                 response.getWriter().print(true);
-            }else{
-                request.getRequestDispatcher("/ControlProducto").forward(request, response);
             }
     }
 }

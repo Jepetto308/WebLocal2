@@ -3,9 +3,9 @@ $(document).ready(function () {
 
     $("#IngresoLog").click(function () {
         $.ajax({url: contexto + "/ControlLogin?username=" + $("#username").val() + "&password=" + $("#password").val(),
-            method: "POST",
+            method: "GET",
             success: function (result) {
-                if (result == true) {
+                if (result == true || result == "true") {
                     $(".mensajeError").animate({
                         height: '30px'
                     }, function () {
@@ -16,7 +16,7 @@ $(document).ready(function () {
                         },5000);
                     });
                 } else {
-                    window.location = contexto + "/ControlProducto";
+                    window.location = contexto + "/Jsp/menu.jsp";
                 }
             }});
     });

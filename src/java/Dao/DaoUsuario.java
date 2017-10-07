@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Dao;
-import Model.Producto;
 import Model.Usuario;
 import Utils.Conexion;
 import java.awt.image.BufferedImage;
@@ -38,7 +37,7 @@ public class DaoUsuario{
         try {
             conexion.setAutoCommit(false);
             PreparedStatement ps = conexion.prepareStatement("INSERT INTO usuarios (numero_identificacion, nombre, apellidos, username,"
-                    + "telefono,foto_perfil,password) VALUES (?,?,?,?,?,?,?)");
+                    + "telefono,foto_perfil,password,sexo,codigo_rol) VALUES (?,?,?,?,?,?,?,?,?)");
            
             File file = new File(oUsuario.getRutaImg());
             fis = new FileInputStream(file);
@@ -50,6 +49,8 @@ public class DaoUsuario{
             ps.setString(5, oUsuario.getTelefono());
             ps.setBinaryStream(6,fis,(int)file.length());
             ps.setString(7, oUsuario.getPassword());
+            ps.setString(8, oUsuario.getSexo());
+            ps.setInt(9, oUsuario.getCodigoRol());
             
             ps.executeUpdate();
             
@@ -140,7 +141,7 @@ public class DaoUsuario{
         Usuario oUsuario = new Usuario();
         try {
             Statement s = conexion.createStatement(); 
-            ResultSet rs = s.executeQuery ("SELECT A.numero_identificacion,A.nombre,A.apellidos,A.username,A.telefono,A.foto_perfil FROM usuarios A WHERE A.numero_identificacion = '"+numeroIdentificacion+"'");
+            ResultSet rs = s.executeQuery ("SELECT A.numero_identificacion,A.nombre,A.apellidos,A.username,A.telefono,A.foto_perfil,A.sexo FROM usuarios A WHERE A.numero_identificacion = '"+numeroIdentificacion+"'");
             while (rs.next()) 
             { 
                  oUsuario.setNumeroIdentificacion(rs.getString(1));
@@ -158,6 +159,8 @@ public class DaoUsuario{
                 } catch (IOException ex) {
                     Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                oUsuario.setSexo(rs.getString(7));
             }
         } catch (SQLException ex) {
             System.err.println("Error consultando el Usuario con Numero Identificacion: "+numeroIdentificacion);
@@ -214,7 +217,9 @@ public class DaoUsuario{
         Usuario oUsuario = new Usuario();
         try {
             Statement s = conexion.createStatement(); 
-            ResultSet rs = s.executeQuery ("SELECT A.numero_identificacion,A.nombre,A.apellidos,A.username,A.telefono,A.foto_perfil FROM usuarios A WHERE A.username = '"+username+"' AND A.password = '"+password+"'");
+            ResultSet rs = s.executeQuery ("SELECT A.numero_identificacion,A.nombre,A.apellidos,A.username,A.telefono,A.foto_perfil,A.sexo,A.codigo_rol,B.nombre nombre_rol FROM usuarios A "
+                    + "INNER JOIN roles B ON A.codigo_rol = B.codigo"
+                    + " WHERE A.username = '"+username+"' AND A.password = '"+password+"'");
             while (rs.next()) 
             { 
                  oUsuario.setNumeroIdentificacion(rs.getString(1));
@@ -232,6 +237,10 @@ public class DaoUsuario{
                 } catch (IOException ex) {
                     Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                oUsuario.setSexo(rs.getString(7));
+                oUsuario.setCodigoRol(rs.getInt(8));
+                oUsuario.setNombreRol(rs.getString(9));
             }
         } catch (SQLException ex) {
             System.err.println("Error validando el Usuario con Usuario: "+username);
